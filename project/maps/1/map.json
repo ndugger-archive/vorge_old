@@ -1,0 +1,12 @@
+{
+    "number": 1,
+    "name": "Vorge Demo",
+    "tileset": "assets/tiles/testTiles.png",
+    "width": "20",
+    "height": "15",
+    "grid": 32,
+    "layer1": [],
+    "layer2": [],
+    "layer3": [],
+    "layer4": []
+}

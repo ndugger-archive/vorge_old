@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vorge</title>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="public/fonts/entypo/entypo.css" />
+		<link type="text/css" rel="stylesheet" href="public/css/style.css" />
+	</head>
+	<body>
+		<header id="system">
+			<nav class="separated">
+				<label id="saveMap" class="entypo">
+					&#128190;
+				</label>
+			</nav>
+			<div class="separator"></div>
+			<nav>
+				<!-- Layer 1 Radio -->
+				<input type="radio" id="l1" name="layers" checked />
+				<label id="layer1Radio" for="l1">
+					1
+				</label>
+				
+				<!-- Layer 2 Radio -->
+				<input type="radio" id="l2" name="layers" />
+				<label id="layer2Radio" for="l2">
+					2
+				</label>
+				
+				<!-- Layer 3 Radio -->
+				<input type="radio" id="l3" name="layers" />
+				<label id="layer3Radio" for="l3">
+					3
+				</label>
+				
+				<!-- Layer 4 Radio -->
+				<input type="radio" id="l4" name="layers" />
+				<label id="layer4Radio" for="l4">
+					4
+				</label>
+				
+				<!-- Eventing Layer Radio -->
+				<input type="radio" id="le" name="layers" />
+				<label id="eventRadio" for="le" class="entypo">
+					&#9889;
+				</label>
+			</nav>
+			<nav>
+				<!-- Brush Tool Radio -->
+				<input type="radio" id="t1" name="tools" checked />
+				<label id="brushRadio" for="t1" class="entypo">
+					&#59290;
+				</label>
+				
+				<!-- Bucket Tool Radio -->
+				<input type="radio" id="t2" name="tools" />
+				<label id="bucketRadio" for="t2" class="entypo">
+					&#128254;
+				</label>
+				
+				<!-- Eraser Tool Radio -->
+				<input type="radio" id="t3" name="tools" />
+				<label id="eraserRadio" for="t3" class="entypo">
+					&#9003;
+				</label>
+			</nav>
+			<nav class="separated">
+				<!-- Grid Checkbox -->
+				<input type="checkbox" id="gt" name="grid" checked />
+				<label id="gridCheck" for="gt" class="entypo grid">
+					&#9871;
+				</label>
+			</nav>
+			<div class="separator"></div>
+			<nav id="switchMode">
+				<!-- Map Editor Radio -->
+				<input type="radio" id="pm" name="page" checked />
+				<label id="mapeditorRadio" for="pm" class="entypo">
+					&#59175;
+				</label>
+				<!-- DB Radio -->
+				<input type="radio" id="pdb" name="page" />
+				<label id="databaseRadio" for="pdb" class="entypo">
+					&#128248;
+				</label>
+			</nav>
+		</header>
+		
+		<div id="wizard">
+			<section>
+				<img src="public/img/wizardLogo.png" alt="Vorge" />
+				<div class="version float right">v0.0.022</div>
+				<p>
+					Use the following form to configure your project for the first time. You may always change these settings later on.
+				</p>
+				<div class="clear"></div>
+				<div class="half float left">
+					<label>Project Title:</label>
+					<input type="text" id="projectTitle" value="Untitled Project" />
+					<p>
+					<label>Description:</label>
+					<textarea id="projectDesc">...</textarea>
+				</div>
+				<div class="half float right">
+					<label>Game Type:</label>
+					<div class="clear"></div>
+					<div class="half float left">
+						<input type="radio" id="typeDefault" name="gameType" checked />
+						<label for="typeDefault"><span></span>Default</label>
+					</div>
+					<div class="half float right">
+						<input type="radio" id="typePlatformer" name="gameType" disabled />
+						<label for="typePlatformer"><span></span>Platformer</label>
+					</div>
+					<div class="clear pad"></div>
+					<div class="half float left">
+						<input type="radio" id="typeIso" name="gameType" disabled />
+						<label for="typeIso"><span></span>Isometric</label>
+					</div>
+					<div class="clear"></div>
+					<p>
+						<label>Tile Size:</label>
+						<input type="number" id="tileSize" value="32" />
+					</p>
+					<p>
+						<button type="button" id="saveWizard" class="float right">Save</button>
+					</p>
+				</div>
+				<div class="clear"></div>
+			</section>
+		</div>
+		
+		<div id="newMap">
+			<section>
+				<h2>Create a map</h2>
+				<label>Map Name:</label>
+				<input type="text" id="mapName" value="Untitled Map" />
+				<div class="clear"></div><br/>
+				<div class="float left">
+					<label>Tileset:</label>
+					<input type="text" id="mapTiles" value="testTiles"  disabled />
+					<input type="text" id="mapTilesH" value="assets/tiles/testTiles.png" hidden />
+				</div>
+				<div class="float left">
+					<label>&nbsp;</label><br/>
+					<button type="button" id="chooseTileset" class="cancel">Choose Tiles</button>	
+				</div>
+				<div class="clear"></div><br/>
+				<div class="half float left">
+					<label>Width:</label>
+					<input type="number" id="mapWidth" value="20" />
+				</div>
+				<div class="half float right">
+					<label>Height:</label>
+					<input type="number" id="mapHeight" value="15" />
+				</div>
+				<div class="clear"></div>
+				<label>&nbsp;</label><br/>
+				<button type="button" id="createMap" class="float right">Create</button>
+			</section>
+		</div>
+		
+		<div id="database">
+			<div class="container">
+				<nav>
+					<input type="radio" id="dbChars" name="dbTabs" checked />
+					<label for="dbChars"><i class="entypo">&#128100;</i></label>
+					<input type="radio" id="dbClasses" name="dbTabs" />
+					<label for="dbClasses"><i class="entypo">&#59170;</i></label>
+					<input type="radio" id="dbItems" name="dbTabs" />
+					<label for="dbItems"><i class="entypo">&#10002;</i></label>
+				</nav>
+				<div class="inner">
+					<aside>
+						Characters
+						<ol>
+							<li class="active">Character Name</li>
+							<li>Character Name</li>
+						</ol>
+					</aside>
+				</div>
+			</div>
+		</div>
+		
+		<div id="editor">
+			<div id="infoPane">
+				<div id="activeProject" class="float right"></div>
+				<div id="activeMap" class="float left"></div>
+			</div>
+			<aside id="mapSide">
+				<div id="tiles"></div>
+				<div id="maps">
+					Maps
+					<ul></ul>
+				</div>
+			</aside>
+			<div id="mapEditor">
+				<div id="mapGapX"></div>
+				<div id="mapGapY"></div>
+			</div>
+		</div>
+		
+		<div id="eventEditor">
+			<div class="cover"></div>
+			<aside>
+				Create an Event
+				<div class="clear pad"></div>
+				<div>
+					<label>Event Name:</label>
+					<input type="text" id="eventName" />
+				</div>
+			</aside>
+			<div id="eventIDE">
+				Event Functions
+				<!--<div id="eventFunctionsTop"></div> border needs to be defined via JS -->
+				<div id="eventFunctions"></div>
+				<div id="addFunct">
+					<div class="half float left">
+						<button type="button" id="eDialogue">Dialogue</button>
+						<button type="button" id="eOptions">Options</button>
+						<button type="button" id="eWait">Wait (timeout)</button>
+					</div>
+					<div class="half float right">
+						<button type="button" id="eChangeVar">Change Variable</button>
+						<button type="button" id="eConditional">Conditional (if/else)</button>
+					</div>
+				</div>
+				<div class="editFunct eDialogue">
+					Dialogue
+					<div class="clear pad"></div>
+					<div class="graphic">
+						<label>Graphic:</label>
+						<div class="face"></div>
+					</div>
+					<div class="half float left">
+						<label>Speaker's Name:</label>
+						<div class="clear"></div>
+						<input type="checkbox" id="speakersNameSame" />
+						<label for="speakersNameSame"><span></span>Same as event</label>
+						<div class="clear pad"></div>
+						<input type="text" id="speakersName" />
+					</div>
+					<div class="clear pad"></div>
+					<label>Dialogue Text:</label>
+					<div class="dialogueText">
+						<textarea id="dialogueText"></textarea>
+					</div>
+					<div class="clear pad"></div>
+					<button type="button" id="generateDialogue" class="float right attn">Generate</button>
+					<button type="button" id="cancelFunct" class="float right cancel">Cancel</button>
+					<div class="clear"></div>
+				</div>
+				<div class="editFunct eOptions">
+					Options
+					<div class="clear pad"></div>
+					<label>Type options below (One per line):</label>
+					<textarea id="optionLines"></textarea>
+					<div class="clear pad"></div>
+					<button type="button" id="generateOpts" class="float right attn">Generate</button>
+					<button type="button" id="cancelFunct" class="float right cancel">Cancel</button>
+					<div class="clear"></div>
+				</div>
+				<div class="editFunct eChangeVar">
+					Change Variable
+					<div class="clear pad"></div>
+					<label>Variable:</label>
+					<input type="text" id="eVar" />
+					<label>Value:</label>
+					<input type="text" id="varTo" />
+					<div class="clear pad"></div>
+					<button type="button" id="generateVar" class="float right attn">Generate</button>
+					<button type="button" id="cancelFunct" class="float right cancel">Cancel</button>
+					<div class="clear"></div>
+				</div>
+				<div class="editFunct eWait">
+					Wait (setTimeout)
+					<div class="clear pad"></div>
+					<label>Time (in seconds):</label>
+					<input type="number" id="waitTime" />
+					<div class="clear pad"></div>
+					<button type="button" id="generateWait" class="float right attn">Generate</button>
+					<button type="button" id="cancelFunct" class="float right cancel">Cancel</button>
+					<div class="clear"></div>
+				</div>
+				<div id="eventButtons">
+					<button type="button" id="newFunct" class="float left new">New Function</button>
+					<button type="button" id="saveEvent" class="float right">Save Event</button>
+					<button type="button" id="cancelEvent" class="float right cancel">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<!-- jQuery -->
+		<script type="text/javascript" src="public/js/vendor/jquery.min.js"></script>
+		<!-- Vorge JS -->
+		<script type="text/javascript" src="public/js/boot.js"></script>
+		<script type="text/javascript" src="public/js/database.js"></script>
+		<script type="text/javascript" src="public/js/eventing.js"></script>
+		<script type="text/javascript" src="public/js/map.js"></script>
+		<!-- Vendor -->
+		<script type="text/javascript" src="public/js/vendor/beautify.js"></script>
+		<script type="text/javascript" src="public/js/vendor/ace/src-min/ace.js"></script>
+		<script>
+			var eventEditor = ace.edit("eventFunctions");
+			eventEditor.setTheme("ace/theme/monokai");
+			eventEditor.getSession().setMode("ace/mode/javascript");
+			eventEditor.setHighlightActiveLine(false);
+		</script>
+	</body>
+</html>

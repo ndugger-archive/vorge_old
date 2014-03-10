@@ -1,0 +1,9 @@
+{
+    "title": "Untitled Project",
+    "description": "...",
+    "type": "default",
+    "default": {
+        "tileSize": 32
+    },
+    "wizard": false
+}

@@ -1,0 +1,754 @@
+// out: ../css/style.css
+
+@dark:#292b31;
+@darkbg:linear-gradient(to bottom, #303037 0%,#33343d 100%);
+@medium:#34353e;
+@mediumbg:linear-gradient(to bottom, #444652 0%,#34353e 100%);
+@mediumbgR:linear-gradient(to bottom, #34353e 0%,#444652 100%);
+@light:#535567;
+@lightbg:linear-gradient(to bottom, #535567 0%,#3e3f4a 100%);
+@lightbgR:linear-gradient(to bottom, #3e3f4a 0%,#535567 100%);
+@highlight:#6f707f;
+@verylight:#9091a1;
+
+@bar:#f8f8f8;
+@barbg:linear-gradient(to bottom, #FFF 0%,#e9e9ed 100%);
+@shadow:#cbcdcf;
+
+@icon:#e1e2e5;
+@text:#FFF;
+@active:#eb4747;
+@action:#47c4eb;
+@attn:#ebce47;
+
+html {
+	height:100%;
+	-ms-user-select:none;
+	-o-user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+}
+
+body {
+	height:100%;
+	margin:0;
+	padding:0;
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size:15px;
+	color:@text;
+	text-shadow:0 1px 1px @dark;
+	background:@icon;
+	cursor:default;
+	.entypo {
+		font-family:"entypo";
+		font-size:35px;
+		line-height:14px;
+		font-weight:normal;
+		font-style:normal;
+		&.grid {
+			font-size:40px;
+			line-height:10px;
+		}
+	}
+	h1, h2, h3 {
+		margin:0 0 20px;
+		padding:0;
+		font-weight:700;
+	}
+	input[type="text"], input[type="number"], textarea {
+		-ms-user-select:text;
+		-o-user-select:text;
+		-moz-user-select:text;
+		-webkit-user-select:text;
+		background:@highlight;
+		cursor:text;
+		border:none;
+		width:calc(~'100% - 24px');
+		padding:8px 12px;
+		box-shadow:0 0 0 1px @dark, 0 0 0 2px @highlight, inset 0 0 4px @light;
+		border-radius:2px;
+		outline:none;
+		color:#FFF;
+		font-family:Arial, sans-serif;
+		&:disabled {
+			cursor:default;
+		}
+		&:focus {
+			box-shadow:0 0 0 1px @action;
+		}
+	}
+	textarea {
+		height:80px;
+		resize:none;
+		margin-top:2px;
+	}
+	label {
+		font-size:13px;
+		font-weight:700;
+	}
+	input[type="checkbox"], input[type="radio"] {
+		position:absolute;
+		visibility:hidden;
+		& + label {
+			font-weight:400;
+			span {
+				display:block;
+				float:left;
+				width:14px;
+				height:14px;
+				position:relative;
+				top:4px;
+				margin-right:6px;
+				background:@highlight;
+				box-shadow:0 0 0 1px @dark, 0 0 0 2px @highlight;
+				border-radius:100%;
+				cursor:pointer;
+			}
+		}
+		&:checked + label {
+			span {
+				background:@action;
+				box-shadow:0 0 0 1px @dark, 0 0 0 2px @highlight, inset 0 0 0 2px @highlight, inset 0 0 0 3px @light;
+			}
+		}
+		&[disabled] + label {
+			opacity:0.5;
+			span {
+				cursor:default;
+			}
+		}
+	}
+	input[type="checkbox"] {
+		& + label span {
+			border-radius:2px;
+		}
+	}
+	button {
+		background:@action;
+		border:none;
+		border-radius:2px;
+		font-family: 'Montserrat Alternates', sans-serif;
+		font-weight:700;
+		color:#FFF;
+		padding:8px 16px;
+		cursor:pointer;
+		outline:none;
+		box-shadow:inset 0 1px rgba(255, 255, 255, 0.2), inset 0 8px 8px rgba(255, 255, 255, 0.10), 0 0 2px @medium;
+		text-shadow:0 1px rgba(0, 0, 0, 0.2);
+		&.cancel {
+			background:@icon;
+			color:@light;
+			text-shadow:0 1px rgba(255, 255, 255, 1);
+			box-shadow:inset 0 1px rgba(255, 255, 255, 0.6), inset 0 8px 8px rgba(255, 255, 255, 0.4), 0 0 2px @medium;
+		}
+		&.attn {
+			background:@attn;
+		}
+		&.new {
+			background:@active;
+		}
+		&:hover {
+			box-shadow:0 0 4px @medium;
+		}
+		&:active {
+			box-shadow:inset 0 8px 8px rgba(0, 0, 0, 0.2), 0 0 4px @medium;
+		}
+	}
+	a {
+		
+	}
+	.float {
+		&.left {
+			float:left;
+		}
+		&.right {
+			float:right;
+		}
+	}
+	.half {
+		width:calc(~'50% - 10px');
+	}
+	.clear {
+		clear:both;
+	}
+	.pad {
+		padding:5px;
+	}
+	.version {
+		color:@icon;
+		opacity:0.5;
+		font-weight:700;
+		font-size:12px;
+		text-shadow:0 1px @dark;
+	}
+	#eventEditor {
+		position:absolute;
+		z-index:-1;
+		visibility:hidden;
+		top:72px;
+		right:0;
+		bottom:0;
+		left:0;
+		overflow-x:hidden;
+		aside {
+			margin-right:-320px;
+			transition:margin-right .2s ease-in-out;
+		}
+		#eventIDE {
+			opacity:0;
+			transition:opacity .2s ease-in-out;
+			position:absolute;
+			top:48px;
+			right:320px + 48px;
+			bottom:48px;
+			left:48px;
+			#eventFunctions {
+				position:absolute;
+				background:@dark;
+				box-shadow:0 0 0 1px @highlight;
+				border-radius:2px;
+				top:40px;
+				right:10px;
+				bottom:56px;
+				left:10px;
+			}
+		}
+	}
+	&.eventing {
+		#editor {
+			#activeMap {
+				margin-left:320px;
+				transition:margin-left .2s ease-in-out;
+			}
+			aside {
+				width:0;
+				overflow:hidden;
+				transition:width .2s ease-in-out;
+			}
+			z-index:0;
+			transition:margin-left .2s ease-in-out;
+			margin-left:-320px;
+		}
+		#eventEditor {
+			z-index:1;
+			position:absolute;
+			top:72px;
+			right:0;
+			bottom:0;
+			left:0;
+			z-index:1;
+			visibility:visible;
+			overflow:hidden;
+			aside {
+				width:299px;
+				border-left:1px solid @medium;
+				padding:10px;
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				margin-right:0;
+				background:@light;
+			}
+			#eventIDE {
+				opacity:1;
+				padding:10px;
+				background:@light;
+				border:1px solid @medium;
+				border-radius:2px;
+				position:absolute;
+				top:48px;
+				right:320px + 48px;
+				bottom:48px;
+				left:48px;
+				#eventFunctionsTop {
+					border-left:40px solid @medium;
+					background:@dark;
+					height:10px;
+					margin-top:10px;
+					border-radius:2px 2px 0 0;
+				}
+				#eventFunctions {
+					position:absolute;
+					background:@dark;
+					box-shadow:0 0 0 1px @highlight;
+					border-radius:2px;
+					top:40px;
+					right:10px;
+					bottom:56px;
+					left:10px;
+					.ace_gutter {
+						background:@medium;
+					}
+					.ace_print-margin {
+						background:@medium;
+					}
+					.ace_marker-layer .ace_selection {
+						background:@light;
+					}
+				}
+				#eventButtons {
+					position:absolute;
+					right:10px;
+					bottom:10px;
+					left:10px;
+				}
+				#addFunct {
+					position:absolute;
+					top:50px;
+					right:20px;
+					bottom:66px;
+					width:300px;
+					padding:10px;
+					box-shadow:inset 0 0 0 1px @highlight;
+					background:@light;
+					z-index:9;
+					display:none;
+					&.active {
+						display:block;
+					}
+					.half {
+						width:145px;
+						button {
+							background:@highlight;
+							width:100%;
+							padding:8px 0;
+							text-align:center;
+							font-size:11px;
+							font-weight:400;
+						}
+					}
+				}
+				.editFunct {
+					position:absolute;
+					top:72px;
+					bottom:88px;
+					right:42px;
+					width:460px;
+					padding:10px;
+					box-shadow:inset 0 0 0 1px @medium, inset 0 0 0 2px @highlight;
+					background:@light;
+					z-index:10;
+					overflow:auto;
+					display:none;
+					&.active {
+						display:block;
+					}
+					&.eDialogue, &.eOptions, &.eChangeVar, &.eWait {
+						bottom:auto;
+						.graphic {
+							float:left;
+							width:90px;
+							.face {
+								margin-top:2px;
+								cursor:pointer;
+								width:80px;
+								height:80px;
+								border-radius:2px;
+								background:@highlight;
+								box-shadow:0 0 0 1px @dark, 0 0 0 2px @highlight, inset 0 0 4px @light;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	counter-reset:which;
+	&.database {
+		#database {
+			position:absolute;
+			z-index:100;
+			top:40px;
+			right:0;
+			bottom:0;
+			left:0;
+			background:url(../img/transparent.png);
+			.container {
+				position:absolute;
+				top:32px;
+				right:32px;
+				bottom:32px;
+				left:32px;
+				padding:0;
+				background:@light;
+				border-radius:4px;
+				nav {
+					padding:0 10px;
+					height:40px;
+					background:@lightbg;
+					border-radius:4px 4px 0 0;
+					input[type="radio"] {
+						& + label {
+							display:block;
+							float:left;
+							background:@light;
+							margin-right:5px;
+							height:30px;
+							line-height:32px;
+							margin-top:10px;
+							padding:0 10px;
+							font-size:11px;
+							border-radius:2px 2px 0 0;
+							cursor:pointer;
+						}
+						&:checked + label {
+							background:@highlight;
+						}
+					}
+				}
+				.inner {
+					position:absolute;
+					top:40px;
+					right:0;
+					bottom:0;
+					left:0;
+					aside {
+						position:absolute;
+						top:0;
+						bottom:0;
+						padding:10px;
+						width:240px;
+						background:@highlight;
+						border-radius:0 0 0 4px;
+						box-shadow:1px 0 @medium;
+						ul, ol {
+							margin:10px 0 0;
+							padding:0;
+							li {
+								display:block;
+								margin:0 -10px;
+								padding: 4px 10px;
+								font-size: 11px;
+								font-weight: bold;
+								cursor: pointer;
+								counter-increment:which;
+								&:before {
+									display:block;
+									float:left;
+									margin-right:5px;
+									text-align:right;
+									content:counter(which) + ".";
+								}
+								&.active, &.active:hover {
+									background: @lightbgR;
+									box-shadow:inset 0 1px @medium, inset 0 -1px @medium;
+								}
+								&:hover {
+									background:@verylight;
+									box-shadow:inset 0 -1px @light, 0 -1px @light;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		header nav, .separator {
+			display:none;
+		}
+		#switchMode {
+			display:block;
+		}
+	}
+}
+
+header {
+	height:40px;
+	background:@mediumbg;
+	box-shadow:inset 0 -1px @dark;
+	position:relative;
+	z-index:2;
+	padding:0;
+	.separator {
+		height:40px;
+		border-left:1px solid @dark;
+		border-right:1px solid @light;
+		margin-right:10px;
+		float:left;
+	}
+	nav {
+		display:block;
+		float:left;
+		margin:4px 5px;
+		padding:1px;
+		background:@lightbg;
+		box-shadow:inset 0 0 0 1px @dark, inset 0 -2px @medium, inset 0 2px @light, inset 0 3px @highlight, 0 1px @light, 0 -1px @light;
+		border-radius:3px;
+		&.separated {
+			margin-right:15px;
+		}
+		label {
+			display:block;
+			float:left;
+			width:30px;
+			height:30px;
+			text-align:center;
+			line-height:30px;
+			cursor:pointer;
+			color:#FFF;
+			//box-shadow:inset 1px 0 @medium, inset 2px 0 @light;
+			&:hover {
+				background:@light;
+				box-shadow:inset 0 0 0 1px @medium, 1px 0 @light, -1px 0 @light;
+			}
+			&:active {
+				background:@mediumbgR;
+				box-shadow:inset 0 0 0 1px @medium, 1px 0 @light, -1px 0 @light;
+			}
+			&:first-of-type {
+				border-radius:2px 0 0 2px;
+			}
+			&:last-of-type {
+				border-radius:0 2px 2px 0;
+			}
+			&.hidden {
+				display:none;
+			}
+		}
+		input[type="checkbox"], input[type="radio"] {
+			display:none;
+			&:checked + label {
+				background:@darkbg;
+				box-shadow:inset 0 0 0 1px @medium, 1px 0 @light, -1px 0 @light;
+			}
+			& + label:active {
+				background:@mediumbgR;
+				box-shadow:inset 0 0 0 1px @medium, 1px 0 @light, -1px 0 @light;
+			}
+			&:checked + label + input + label:hover {
+				box-shadow:inset 0 0 0 1px @medium, 1px 0 @light;
+			}
+		}
+	}
+}
+
+#wizard {
+	display:none;
+	z-index:3;
+	&.active {
+		display:block;
+		background:@medium;
+		background:url(../img/transparent.png);
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		overflow:auto;
+		section {
+			padding:20px;
+			width:600px;
+			height:440px;
+			background:@light;
+			border-radius:4px;
+			position:absolute;
+			top:50%;
+			margin-top:-240px;
+			left:50%;
+			margin-left:-320px;
+			.half {
+				width:calc(~'50% - 10px');
+			}
+		}
+	}
+}
+
+#newMap {
+	display:none;
+	z-index:2;
+	&.active {
+		display:block;
+		background:@light;
+		width:480px;
+		height:346px;
+		border-radius:4px;
+		position:absolute;
+		top:50%;
+		margin-top:-173px;
+		left:50%;
+		margin-left:-240px;
+		section {
+			padding:20px;
+			#chooseTileset {
+				margin-left:8px;
+			}
+			.half {
+				width:calc(~'50% - 10px');
+			}
+		}
+	}
+}
+
+#editor {
+	position:absolute;
+	z-index:1;
+	top:40px;
+	right:0;
+	bottom:0;
+	left:0;
+	#infoPane {
+		height:32px;
+		line-height:32px;
+		padding:0 10px;
+		background:@barbg;
+		color:@highlight;
+		text-shadow:none;
+		font-weight:700;
+		font-size:12px;
+		box-shadow:inset 0 -1px @shadow;
+		div.float.left {
+			margin-right:20px;
+		}
+	}
+	aside {
+		width:320px;
+		background:@light;
+		position:absolute;
+		z-index:1;
+		top:32px;
+		bottom:0;
+		box-shadow:1px 0 @shadow;
+		#tiles {
+			background:url(../img/transparent.png);
+			position:absolute;
+			top:0;
+			right:0;
+			bottom:240px;
+			left:0;
+			overflow:auto;
+			#choiceMark {
+				position:relative;
+				box-shadow:inset 0 0 0 1px @text, inset 0 0 0 2px @text, inset 0 0 0 3px @dark, 0 0 0 1px @dark;
+			}
+		}
+		#maps {
+			padding:10px;
+			width:300px;
+			height:220px;
+			overflow:auto;
+			position:absolute;
+			bottom:0;
+			border-right:1px solid @medium;
+			box-shadow:inset 0 1px @medium;
+			ul {
+				margin:10px 0 0;
+				padding:0;
+				list-style:none;
+				li {
+					width:100%;
+					margin:0 0 0 -10px;
+					padding:4px 10px;
+					font-size:11px;
+					font-weight:bold;
+					cursor:pointer;
+					&:hover {
+						background:@highlight;
+						box-shadow:inset 0 -1px @medium, inset 0 1px @medium, 0 1px @highlight, 0 -1px @highlight;
+					}
+					&.active {
+						background:@mediumbgR;
+						box-shadow:inset 0 1px @dark, inset 0 -1px @medium, 0 1px @highlight, 0 -1px @highlight;
+						color:#FFF;
+					}
+				}
+			}
+		}
+	}
+	#mapEditor {
+		position:absolute;
+		z-index:0;
+		top:32px;
+		right:0;
+		bottom:0;
+		left:320px;
+		padding:32px;
+		overflow:auto;
+		#mapGapX {
+			height:32px;
+			position:relative;
+			right:-32px;
+			margin-top:-32px;
+			z-index:0;
+			//visibility:hidden;
+		}
+		#mapGapY {
+			width:32px;
+			position:relative;
+			bottom:-32px;
+			margin-left:-32px;
+			float:left;
+			z-index:0;
+			//visibility:hidden;
+		}
+		#mapBG {
+			background:@bar;
+			box-shadow:0 0 2px 2px @shadow;
+			position:absolute;
+			z-index:0;
+		}
+		canvas {
+			position:absolute;
+			z-index:1;
+			&#layer1 {
+				opacity:0.75;
+				z-index:1;
+				&.activeLayer {
+					opacity:1;
+				}
+			}
+			&#layer2 {
+				opacity:0.70;
+				z-index:2;
+				&.activeLayer {
+					opacity:1;
+				}
+			}
+			&#layer3 {
+				opacity:0.65;
+				z-index:3;
+				&.activeLayer {
+					opacity:1;
+				}
+			}
+			&#layer4 {
+				opacity:0.60;
+				z-index:4;
+				&.activeLayer {
+					opacity:1;
+				}
+			}
+			&#events {
+				z-index:5;
+			}
+		}
+		svg {
+			position:absolute;
+			z-index:7;
+			line {
+				stroke:rgba(0, 0, 0, 0.20);
+				stroke-width:4;
+			}
+			&.hidden {
+				visibility:hidden;
+			}
+		}
+		#gridContainer {
+			position:absolute;
+			&.hidden {
+				visibility:hidden;
+			}
+		}
+		#mapBlanket {
+			position:absolute;
+			z-index:9;
+			cursor:default;
+		}
+		#paintMark {
+			position:relative;
+			display:none;
+			box-shadow:inset 0 0 0 1px @text, inset 0 0 0 2px @text, inset 0 0 0 3px @dark, 0 0 0 1px @dark;
+			z-index:8;
+		}
+	}
+}
